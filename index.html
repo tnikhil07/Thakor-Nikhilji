@@ -54,6 +54,33 @@ footer{background:var(--navy);color:#d9e3ed;text-align:center;padding:35px 8%} f
 .resume-download{background:#0b3157}
 .resume-download:hover{background:#082846}
 
+
+/* Intro video button + popup */
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:20px}
+.hero-actions .btn{margin-top:0}
+.video-btn{position:relative;display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.10);color:#fff;border:1px solid rgba(255,255,255,.35);padding:12px 18px;border-radius:7px;font-size:13px;font-weight:800;cursor:pointer;backdrop-filter:blur(8px);transition:transform .25s ease,background .25s ease,box-shadow .25s ease}
+.video-btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.18);box-shadow:0 10px 25px rgba(0,0,0,.18)}
+.play-icon{font-size:12px;position:relative;z-index:2}
+.video-pulse{position:absolute;left:13px;width:10px;height:10px;border-radius:50%;background:#e6c36a;opacity:.75;animation:videoPulse 1.8s infinite}
+@keyframes videoPulse{0%{transform:scale(1);opacity:.75;box-shadow:0 0 0 0 rgba(230,195,106,.55)}70%{transform:scale(2.3);opacity:0;box-shadow:0 0 0 10px rgba(230,195,106,0)}100%{transform:scale(1);opacity:0}}
+.intro-modal{display:none;position:fixed;inset:0;z-index:2000;background:rgba(2,12,24,.78);backdrop-filter:blur(8px);padding:22px}
+.intro-modal.open{display:flex;align-items:center;justify-content:center;animation:modalFade .22s ease}
+.intro-window{width:min(760px,94vw);background:#081a2e;border:1px solid rgba(255,255,255,.16);border-radius:18px;overflow:hidden;box-shadow:0 25px 80px rgba(0,0,0,.45);transform:scale(.96);animation:videoPop .28s ease forwards}
+.intro-header{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;color:#fff;background:linear-gradient(90deg,#0b1f3a,#164b78);font-weight:800}
+.intro-close{border:0;background:rgba(255,255,255,.1);color:#fff;width:34px;height:34px;border-radius:50%;font-size:22px;cursor:pointer;transition:background .2s ease,transform .2s ease}
+.intro-close:hover{background:rgba(255,255,255,.2);transform:rotate(90deg)}
+.intro-video{display:block;width:100%;max-height:72vh;background:#000}
+.intro-note{color:#cbd8e5;font-size:12px;text-align:center;padding:9px 14px 12px;margin:0}
+@keyframes modalFade{from{opacity:0}to{opacity:1}}
+@keyframes videoPop{from{transform:scale(.94);opacity:.6}to{transform:scale(1);opacity:1}}
+@media(max-width:600px){.hero-actions{flex-direction:column;align-items:stretch}.hero-actions .btn,.video-btn{width:100%;justify-content:center}.intro-modal{padding:8px}.intro-window{width:98vw;border-radius:12px}}
+
+
+/* Portrait 9:16 introductory video */
+.intro-window{width:min(440px,94vw)}
+.intro-video{width:100%;aspect-ratio:9/16;height:auto;max-height:78vh;object-fit:contain;background:#000}
+@media(max-width:600px){.intro-window{width:min(94vw,420px)}.intro-video{max-height:76vh}}
+
 </style>
 </head>
 <body>
@@ -67,7 +94,12 @@ footer{background:var(--navy);color:#d9e3ed;text-align:center;padding:35px 8%} f
 <h1>Nikhilji Thakor</h1>
 <h2>Integrated MBA Student | Human Resources & Finance</h2>
 <p>I am an Integrated MBA student at Sankalchand Patel University specializing in Human Resources and Finance, with a strong academic background and practical exposure through internships and academic projects.</p>
+<div class="hero-actions">
 <a class="btn" href="#projects">Explore My Work ↓</a>
+<button class="video-btn" type="button" onclick="openIntroVideo()">
+<span class="video-pulse"></span><span class="play-icon">▶</span> Watch My Introduction
+</button>
+</div>
 </div>
 <div class="profile"><img src="profile-photo.png" alt="Nikhilji Thakor" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;"></div>
 </header>
@@ -94,11 +126,28 @@ footer{background:var(--navy);color:#d9e3ed;text-align:center;padding:35px 8%} f
 </section>
 
 <section id="projects">
-<h2 class="section-title">Featured Projects</h2>
+<h2 class="section-title">Projects</h2>
 <div class="grid">
-<div class="card project"><h3>Customer Satisfaction Towards Green Banking Services</h3><span class="tag">MRP-2</span><span class="tag">Research</span><span class="tag">JASP</span><p>Survey-based research examining customer satisfaction toward green banking services, using questionnaire responses and statistical analysis.</p><p><strong>Focus:</strong> customer perceptions, service experience and green banking adoption.</p></div>
-<div class="card project"><h3>Financial Derivatives</h3><span class="tag">Finance</span><span class="tag">Risk</span><p>Academic work covering futures, options, hedging, arbitrage, mark-to-market, Black-Scholes and Binomial models and derivatives-related risk concepts.</p></div>
-<div class="card project"><h3>Impact of Derivatives Trading on Financial Market Stability</h3><span class="tag">Contemporary Issue</span><span class="tag">Finance</span><p>Explored how derivatives trading can interact with market risk, liquidity, hedging and overall financial-market stability.</p></div>
+<div class="card project">
+<h3>Industry-Oriented Project – Banas Dairy</h3>
+<span class="tag">Industry Project</span>
+<span class="tag">Operations</span>
+<p>Gained practical exposure to dairy processing, supply chain management, quality control, and production operations.</p>
+</div>
+
+<div class="card project">
+<h3>MRP 1 Project – Non-Banking Financial Companies (NBFCs)</h3>
+<span class="tag">MRP 1</span>
+<span class="tag">Research</span>
+<p>Conducted research on NBFC growth, regulatory framework, and their contribution to financial inclusion.</p>
+</div>
+
+<div class="card project">
+<h3>MRP 2 Project – Customer Satisfaction Towards Green Banking Services</h3>
+<span class="tag">MRP 2</span>
+<span class="tag">Research</span>
+<p>Conducted survey-based research to evaluate customer satisfaction with green banking services and digital banking adoption.</p>
+</div>
 </div>
 </section>
 
@@ -170,6 +219,21 @@ function copyText(text,button){
 }
 </script>
 
+
+<div id="introVideoModal" class="intro-modal" onclick="closeIntroVideo(event)">
+  <div class="intro-window">
+    <div class="intro-header">
+      <span>🎬 A Quick Introduction</span>
+      <button class="intro-close" type="button" onclick="closeIntroVideo()" aria-label="Close video">×</button>
+    </div>
+    <video id="introVideo" class="intro-video" controls playsinline preload="metadata">
+      <source src="intro-video.mp4" type="video/mp4">
+      Your browser does not support video playback.
+    </video>
+    <p class="intro-note">A short introduction by Nikhilji Thakor</p>
+  </div>
+</div>
+
 <div id="resumeModal" class="resume-modal" onclick="closeResume(event)">
   <div class="resume-window">
     <div class="resume-window-header">
@@ -195,8 +259,28 @@ function closeResume(event) {
   document.body.style.overflow = "";
 }
 
+
+function openIntroVideo() {
+  const modal = document.getElementById("introVideoModal");
+  const video = document.getElementById("introVideo");
+  modal.classList.add("open");
+  document.body.style.overflow = "hidden";
+  video.currentTime = 0;
+  video.play().catch(function(){});
+}
+
+function closeIntroVideo(event) {
+  if (event && event.target && event.target.id !== "introVideoModal") return;
+  const modal = document.getElementById("introVideoModal");
+  const video = document.getElementById("introVideo");
+  video.pause();
+  video.currentTime = 0;
+  modal.classList.remove("open");
+  document.body.style.overflow = "";
+}
+
 document.addEventListener("keydown", function(e) {
-  if (e.key === "Escape") closeResume();
+  if (e.key === "Escape") { closeResume(); closeIntroVideo(); }
 });
 </script>
 </body>

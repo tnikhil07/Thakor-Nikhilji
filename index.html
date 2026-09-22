@@ -81,6 +81,60 @@ footer{background:var(--navy);color:#d9e3ed;text-align:center;padding:35px 8%} f
 .intro-video{width:100%;aspect-ratio:9/16;height:auto;max-height:78vh;object-fit:contain;background:#000}
 @media(max-width:600px){.intro-window{width:min(94vw,420px)}.intro-video{max-height:76vh}}
 
+
+/* Scroll reveal animations */
+.reveal{
+  opacity:0;
+  transform:translateY(32px);
+  transition:opacity .75s ease, transform .75s cubic-bezier(.22,.61,.36,1);
+  will-change:opacity,transform;
+}
+.reveal.show{
+  opacity:1;
+  transform:translateY(0);
+}
+.reveal-left{
+  opacity:0;
+  transform:translateX(-32px);
+  transition:opacity .75s ease, transform .75s cubic-bezier(.22,.61,.36,1);
+}
+.reveal-left.show{opacity:1;transform:translateX(0)}
+.reveal-right{
+  opacity:0;
+  transform:translateX(32px);
+  transition:opacity .75s ease, transform .75s cubic-bezier(.22,.61,.36,1);
+}
+.reveal-right.show{opacity:1;transform:translateX(0)}
+.stagger-item{
+  opacity:0;
+  transform:translateY(22px);
+  transition:opacity .6s ease, transform .6s cubic-bezier(.22,.61,.36,1);
+}
+.stagger-item.show{opacity:1;transform:translateY(0)}
+.hero-content-animate{
+  animation:heroContentIn .8s ease both;
+}
+.hero-photo-animate{
+  animation:heroPhotoIn .9s .12s ease both;
+}
+@keyframes heroContentIn{
+  from{opacity:0;transform:translateY(22px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes heroPhotoIn{
+  from{opacity:0;transform:scale(.94) translateY(16px)}
+  to{opacity:1;transform:scale(1) translateY(0)}
+}
+@media(prefers-reduced-motion:reduce){
+  .reveal,.reveal-left,.reveal-right,.stagger-item,
+  .hero-content-animate,.hero-photo-animate{
+    opacity:1!important;
+    transform:none!important;
+    animation:none!important;
+    transition:none!important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -226,8 +280,10 @@ function copyText(text,button){
       <span>🎬 A Quick Introduction</span>
       <button class="intro-close" type="button" onclick="closeIntroVideo()" aria-label="Close video">×</button>
     </div>
-    <video id="introVideo" class="intro-video" controls controlsList="nodownload" disablePictureInPicture playsinline preload="metadata">
-      <source src="video.mp4" type="video/mp4">
+    <video id="introVideo" class="intro-video" controls controlsList="nodownload" disablePictureInPicture playsinline preload="auto">
+      <source src="https://tnikhil07.github.io/Thakor-Nikhilji/intro-video.mp4?v=20260922" type="video/mp4">
+      <source src="https://cdn.jsdelivr.net/gh/tnikhil07/Thakor-Nikhilji@main/intro-video.mp4?v=20260922" type="video/mp4">
+      <source src="intro-video.mp4" type="video/mp4">
       Your browser does not support video playback.
     </video>
     <p class="intro-note">A short introduction by Nikhilji Thakor</p>
@@ -265,8 +321,23 @@ function openIntroVideo() {
   const video = document.getElementById("introVideo");
   modal.classList.add("open");
   document.body.style.overflow = "hidden";
+
+  video.pause();
   video.currentTime = 0;
-  video.play().catch(function(){});
+
+  // Explicitly reload the media so the browser requests fresh metadata.
+  video.load();
+
+  const startPlayback = function() {
+    video.currentTime = 0;
+    video.play().catch(function(){});
+  };
+
+  if (video.readyState >= 1) {
+    startPlayback();
+  } else {
+    video.addEventListener("loadedmetadata", startPlayback, {once:true});
+  }
 }
 
 function closeIntroVideo(event) {
@@ -283,16 +354,46 @@ document.addEventListener("keydown", function(e) {
   if (e.key === "Escape") { closeResume(); closeIntroVideo(); }
 });
 
-document.addEventListener("contextmenu", function(e) {
-  if (e.target && e.target.closest && e.target.closest("#introVideo")) {
-    e.preventDefault();
+/* Scroll-triggered reveal animations */
+(function(){
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const heroText = document.querySelector(".hero > div:first-child");
+  const heroPhoto = document.querySelector(".hero > div:last-child");
+
+  if (heroText) heroText.classList.add("hero-content-animate");
+  if (heroPhoto) heroPhoto.classList.add("hero-photo-animate");
+
+  const sections = document.querySelectorAll("body > section");
+  sections.forEach(function(section){
+    section.classList.add("reveal");
+  });
+
+  const cards = document.querySelectorAll(".card, .stat, .skill");
+  cards.forEach(function(item, index){
+    item.classList.add("stagger-item");
+    item.style.transitionDelay = (Math.min(index % 6, 5) * 70) + "ms";
+  });
+
+  if (reduceMotion || !("IntersectionObserver" in window)) {
+    document.querySelectorAll(".reveal,.stagger-item").forEach(function(el){
+      el.classList.add("show");
+    });
+    return;
   }
-});
-document.addEventListener("dragstart", function(e) {
-  if (e.target && e.target.closest && e.target.closest("#introVideo")) {
-    e.preventDefault();
-  }
-});
+
+  const observer = new IntersectionObserver(function(entries, obs){
+    entries.forEach(function(entry){
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("show");
+      obs.unobserve(entry.target);
+    });
+  }, {threshold:0.12, rootMargin:"0px 0px -50px 0px"});
+
+  document.querySelectorAll(".reveal,.stagger-item").forEach(function(el){
+    observer.observe(el);
+  });
+})();
+
 </script>
 </body>
 </html>

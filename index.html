@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nikhilji Thakor | Finance Portfolio</title>
+<title>Nikhilji Thakor | Finance & Banking Portfolio</title>
 <style>
 :root{--navy:#0b1f3a;--blue:#1769aa;--gold:#c79a3b;--light:#f5f7fa;--text:#243447;--muted:#667085;--white:#fff}
 *{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);background:var(--light);line-height:1.6}
@@ -115,9 +115,194 @@ footer{background:var(--navy);color:#d9e3ed;text-align:center;padding:35px 8%} f
   }
 }
 
+
+
+/* ===== PREMIUM VISUAL POLISH v3 ===== */
+html{scroll-behavior:smooth}
+body{background:#eef4f8!important;position:relative;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-30;pointer-events:none;background:linear-gradient(120deg,#eef7fb 0%,#f8faff 45%,#edf8f6 100%)}
+body::after{content:"";position:fixed;inset:-15%;z-index:-29;pointer-events:none;background:radial-gradient(circle at 12% 18%,rgba(31,157,190,.16),transparent 23%),radial-gradient(circle at 88% 20%,rgba(89,105,226,.13),transparent 24%),radial-gradient(circle at 75% 82%,rgba(199,154,59,.11),transparent 21%),radial-gradient(circle at 22% 88%,rgba(23,105,170,.09),transparent 22%);filter:blur(18px);animation:ambientDrift 20s ease-in-out infinite alternate}
+.ambient-orb{position:fixed;z-index:-28;pointer-events:none;border-radius:50%;filter:blur(2px);opacity:.7}
+.ambient-orb.a{width:190px;height:190px;left:5%;top:35%;background:radial-gradient(circle,rgba(29,177,207,.13),transparent 70%);animation:orbA 17s ease-in-out infinite}
+.ambient-orb.b{width:230px;height:230px;right:4%;top:55%;background:radial-gradient(circle,rgba(91,96,220,.10),transparent 70%);animation:orbB 21s ease-in-out infinite}
+@keyframes ambientDrift{50%{transform:translate3%, -2% scale(1.04)}to{transform:translate(-2%,2%) scale(1.08)}}
+@keyframes orbA{50%{transform:translate(90px,-55px) scale(1.18)}to{transform:translate(-20px,35px)}}
+@keyframes orbB{50%{transform:translate(-80px,55px) scale(.88)}to{transform:translate(15px,-30px)}}
+nav{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 8px 28px rgba(7,26,51,.14);border-bottom:1px solid rgba(255,255,255,.08)}
+.hero{position:relative;isolation:isolate;overflow:hidden;box-shadow:0 20px 55px rgba(11,31,58,.14)}
+.hero::before{content:"";position:absolute;width:520px;height:520px;right:-180px;top:-230px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.16),transparent 67%);animation:heroGlow 9s ease-in-out infinite alternate;pointer-events:none}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,rgba(230,195,106,.65),transparent);opacity:.7}
+@keyframes heroGlow{to{transform:translate(-80px,90px) scale(1.15);opacity:.65}}
+.profile{box-shadow:0 0 0 12px rgba(255,255,255,.045),0 24px 55px rgba(0,0,0,.20)}
+.btn,.resume-btn{box-shadow:0 9px 24px rgba(23,105,170,.18);transition:transform .25s ease,box-shadow .25s ease,filter .25s ease}
+.btn:hover,.resume-btn:hover{transform:translateY(-2px);box-shadow:0 13px 30px rgba(23,105,170,.25);filter:brightness(1.03)}
+section{position:relative}
+.section-title{position:relative;padding-left:17px}
+.section-title::before{content:"";position:absolute;left:0;top:8px;width:4px;height:28px;border-radius:8px;background:linear-gradient(#1769aa,#c79a3b)}
+.card,.stat,.skill{transition:transform .3s cubic-bezier(.22,.61,.36,1),box-shadow .3s ease,border-color .3s ease}
+.card{background:rgba(255,255,255,.88);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px)}
+.card:hover{transform:translateY(-6px);box-shadow:0 18px 42px rgba(11,31,58,.12);border-color:rgba(23,105,170,.20)}
+.skill{background:rgba(255,255,255,.82)}
+.skill:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(23,105,170,.12);border-color:#b9d2e5}
+.stat:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(11,31,58,.22)}
+.timeline{position:relative}
+footer{position:relative;overflow:hidden}
+footer::before{content:"";position:absolute;left:20%;right:20%;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(230,195,106,.55),transparent)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}body::after,.ambient-orb,.hero::before{animation:none!important}.card,.stat,.skill,.btn,.resume-btn{transition:none!important}}
+
+
+/* ===== LEAVE A MESSAGE POPUP ===== */
+.leave-message-btn{
+  position:fixed;
+  right:24px;
+  bottom:24px;
+  z-index:1000;
+  border:0;
+  border-radius:999px;
+  padding:14px 20px;
+  font:600 14px/1.2 inherit;
+  color:#fff;
+  background:linear-gradient(135deg,#1769aa,#0b1f3a);
+  box-shadow:0 12px 30px rgba(11,31,58,.25);
+  cursor:pointer;
+  transition:transform .25s ease,box-shadow .25s ease;
+}
+.leave-message-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 16px 36px rgba(11,31,58,.32);
+}
+.leave-message-btn span{margin-right:7px}
+
+.message-overlay{
+  position:fixed;
+  inset:0;
+  z-index:1100;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(7,20,38,.52);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .25s ease,visibility .25s ease;
+}
+.message-overlay.open{
+  opacity:1;
+  visibility:visible;
+}
+.message-popup{
+  width:min(520px,100%);
+  background:rgba(255,255,255,.97);
+  border:1px solid rgba(255,255,255,.75);
+  border-radius:22px;
+  padding:28px;
+  box-shadow:0 30px 80px rgba(7,20,38,.28);
+  transform:translateY(20px) scale(.97);
+  transition:transform .3s ease;
+}
+.message-overlay.open .message-popup{
+  transform:translateY(0) scale(1);
+}
+.message-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:20px;
+}
+.message-head h3{
+  margin:0 0 5px;
+  color:#0b1f3a;
+  font-size:24px;
+}
+.message-head p{
+  margin:0;
+  color:#667085;
+  font-size:14px;
+}
+.message-close{
+  width:36px;
+  height:36px;
+  border:0;
+  border-radius:50%;
+  background:#f1f5f9;
+  color:#243447;
+  font-size:22px;
+  cursor:pointer;
+}
+.message-form{display:grid;gap:14px}
+.message-form label{
+  display:grid;
+  gap:7px;
+  color:#243447;
+  font-size:13px;
+  font-weight:600;
+}
+.message-form input,
+.message-form textarea{
+  width:100%;
+  box-sizing:border-box;
+  border:1px solid #d9e2ec;
+  border-radius:11px;
+  padding:12px 13px;
+  font:inherit;
+  color:#243447;
+  background:#fff;
+  outline:none;
+  transition:border-color .2s ease,box-shadow .2s ease;
+}
+.message-form input:focus,
+.message-form textarea:focus{
+  border-color:#1769aa;
+  box-shadow:0 0 0 3px rgba(23,105,170,.10);
+}
+.message-form textarea{
+  min-height:125px;
+  resize:vertical;
+}
+.message-submit{
+  border:0;
+  border-radius:11px;
+  padding:13px 18px;
+  color:#fff;
+  background:linear-gradient(135deg,#1769aa,#0b1f3a);
+  font:700 14px/1 inherit;
+  cursor:pointer;
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+.message-submit:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 22px rgba(23,105,170,.22);
+}
+.message-note{
+  margin:0;
+  color:#8a94a6;
+  font-size:11px;
+  line-height:1.5;
+}
+@media(max-width:600px){
+  .leave-message-btn{
+    right:16px;
+    bottom:16px;
+    padding:13px 17px;
+  }
+  .message-popup{
+    padding:22px;
+    border-radius:18px;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .message-overlay,.message-popup,.leave-message-btn,.message-submit{
+    transition:none!important;
+  }
+}
+
 </style>
 </head>
 <body>
+<div class="ambient-orb a" aria-hidden="true"></div><div class="ambient-orb b" aria-hidden="true"></div>
 <nav><div class="logo">Thakor Nikhilji</div><div class="navlinks">
 <a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
 </div></nav>
@@ -371,6 +556,111 @@ document.addEventListener("keydown", function(e) {
     observer.observe(el);
   });
 })();
+
+</script>
+
+<!-- Leave a Message -->
+<button class="leave-message-btn" type="button" onclick="openMessagePopup()" aria-label="Leave a message">
+  <span>✉</span> Leave a Message
+</button>
+
+<div class="message-overlay" id="messageOverlay" onclick="closeMessagePopup(event)" aria-hidden="true">
+  <div class="message-popup" role="dialog" aria-modal="true" aria-labelledby="messageTitle" onclick="event.stopPropagation()">
+    <div class="message-head">
+      <div>
+        <h3 id="messageTitle">Leave a Message</h3>
+        <p>Have a question or want to connect? Send me a message.</p>
+      </div>
+      <button class="message-close" type="button" onclick="closeMessagePopup()" aria-label="Close">×</button>
+    </div>
+
+    <form class="message-form" id="leaveMessageForm" action="https://formspree.io/f/mzezrjwr" method="POST" onsubmit="submitLeaveMessage(event)">
+      <input type="hidden" name="_subject" value="New message from Nikhilji Portfolio">
+
+      <label>
+        Name
+        <input type="text" name="name" placeholder="Your name" required>
+      </label>
+
+      <label>
+        Email
+        <input type="email" name="email" placeholder="your@email.com" required>
+      </label>
+
+      <label>
+        Message
+        <textarea name="message" placeholder="Write your message here..." required></textarea>
+      </label>
+
+      <button class="message-submit" type="submit">Send Message →</button>
+      <p class="message-note">Your message will be sent securely through the contact form.</p>
+    </form>
+  </div>
+</div>
+
+<script>
+
+/* ===== LEAVE A MESSAGE POPUP ===== */
+function openMessagePopup(){
+  const overlay = document.getElementById("messageOverlay");
+  if(!overlay) return;
+  overlay.classList.add("open");
+  overlay.setAttribute("aria-hidden","false");
+  document.body.style.overflow="hidden";
+  const firstInput = overlay.querySelector("input");
+  if(firstInput) setTimeout(() => firstInput.focus(), 150);
+}
+
+function closeMessagePopup(event){
+  if(event && event.target && event.target.id !== "messageOverlay") return;
+  const overlay = document.getElementById("messageOverlay");
+  if(!overlay) return;
+  overlay.classList.remove("open");
+  overlay.setAttribute("aria-hidden","true");
+  document.body.style.overflow="";
+}
+
+async function submitLeaveMessage(event){
+  event.preventDefault();
+
+  const form = document.getElementById("leaveMessageForm");
+  const button = form.querySelector(".message-submit");
+  const originalText = button.textContent;
+
+  button.disabled = true;
+  button.textContent = "Sending...";
+
+  try {
+    const response = await fetch(form.action, {
+      method: "POST",
+      body: new FormData(form),
+      headers: { "Accept": "application/json" }
+    });
+
+    if (response.ok) {
+      button.textContent = "Message Sent ✓";
+
+      setTimeout(function(){
+        form.reset();
+        button.textContent = originalText;
+        button.disabled = false;
+        closeMessagePopup();
+      }, 1300);
+    } else {
+      button.textContent = "Try Again";
+      button.disabled = false;
+      alert("Sorry, your message could not be sent. Please try again.");
+    }
+  } catch (error) {
+    button.textContent = "Try Again";
+    button.disabled = false;
+    alert("Please check your internet connection and try again.");
+  }
+}
+
+document.addEventListener("keydown",function(event){
+  if(event.key === "Escape") closeMessagePopup();
+});
 
 </script>
 </body>

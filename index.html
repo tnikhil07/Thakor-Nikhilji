@@ -226,8 +226,8 @@ function copyText(text,button){
       <span>🎬 A Quick Introduction</span>
       <button class="intro-close" type="button" onclick="closeIntroVideo()" aria-label="Close video">×</button>
     </div>
-    <video id="introVideo" class="intro-video" controls playsinline preload="metadata">
-      <source src="intro-video.mp4" type="video/mp4">
+    <video id="introVideo" class="intro-video" controls controlsList="nodownload" disablePictureInPicture playsinline preload="metadata">
+      <source src="video.mp4" type="video/mp4">
       Your browser does not support video playback.
     </video>
     <p class="intro-note">A short introduction by Nikhilji Thakor</p>
@@ -281,6 +281,17 @@ function closeIntroVideo(event) {
 
 document.addEventListener("keydown", function(e) {
   if (e.key === "Escape") { closeResume(); closeIntroVideo(); }
+});
+
+document.addEventListener("contextmenu", function(e) {
+  if (e.target && e.target.closest && e.target.closest("#introVideo")) {
+    e.preventDefault();
+  }
+});
+document.addEventListener("dragstart", function(e) {
+  if (e.target && e.target.closest && e.target.closest("#introVideo")) {
+    e.preventDefault();
+  }
 });
 </script>
 </body>

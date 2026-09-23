@@ -299,6 +299,44 @@ footer::before{content:"";position:absolute;left:20%;right:20%;top:0;height:1px;
   }
 }
 
+
+/* ===== PREMIUM PORTFOLIO UPGRADE ===== */
+.premium-section{max-width:1250px}
+.section-kicker{font-size:11px;letter-spacing:2.4px;font-weight:800;color:#1769aa;margin-bottom:8px}
+.section-kicker.light{color:#e6c36a}
+.snapshot-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.snapshot-card{background:rgba(255,255,255,.86);border:1px solid #e3ebf2;border-radius:16px;padding:23px;min-height:145px;display:flex;flex-direction:column;justify-content:center;transition:.3s ease;box-shadow:0 8px 28px rgba(11,31,58,.06)}
+.snapshot-card:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(11,31,58,.11);border-color:#b9d2e5}
+.snapshot-icon{font-size:25px;margin-bottom:13px}.snapshot-card strong{color:#0b1f3a;font-size:17px}.snapshot-card span:last-child{font-size:13px;color:#667085;margin-top:5px}
+.journey{position:relative;max-width:900px;margin:auto;padding:5px 0}
+.journey-line{position:absolute;left:24px;top:20px;bottom:20px;width:2px;background:linear-gradient(#1769aa,#c79a3b);opacity:.45}
+.journey-item{position:relative;display:grid;grid-template-columns:50px 1fr;gap:22px;margin:0 0 28px}
+.journey-dot{width:50px;height:50px;border-radius:50%;background:#0b1f3a;color:#e6c36a;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;z-index:1;box-shadow:0 0 0 7px rgba(23,105,170,.07)}
+.journey-item h3{margin:4px 0 5px;color:#0b1f3a}.journey-item p{margin:0;color:#667085;max-width:680px}.journey-item .year{font-size:11px;letter-spacing:1px}
+.learning-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.learning-card{background:#fff;border:1px solid #e4ebf1;border-radius:16px;padding:24px;box-shadow:0 8px 28px rgba(11,31,58,.06)}
+.learning-top{display:flex;align-items:center;gap:11px;font-size:17px;color:#0b1f3a}.learning-top span{font-size:23px}.learning-card p{font-size:13px;color:#667085;min-height:43px}
+.progress{height:7px;background:#e9eff4;border-radius:20px;overflow:hidden}.progress i{display:block;height:100%;background:linear-gradient(90deg,#1769aa,#c79a3b);border-radius:20px}
+.recruiter-section{max-width:1250px;margin:10px auto 70px;padding:45px 8%;border-radius:24px;background:linear-gradient(135deg,#0b1f3a,#164b78);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:35px;box-shadow:0 22px 55px rgba(11,31,58,.18);position:relative;overflow:hidden}
+.recruiter-section:after{content:"";position:absolute;width:360px;height:360px;right:-130px;top:-160px;border-radius:50%;background:radial-gradient(circle,rgba(230,195,106,.18),transparent 68%)}
+.recruiter-section h2{font-size:31px;line-height:1.15;margin:4px 0 12px;max-width:720px}.recruiter-section p{color:#d7e4ef;max-width:720px;margin:0}.recruiter-actions{display:flex;flex-wrap:wrap;gap:10px;position:relative;z-index:1;min-width:0}
+.outline-btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:8px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08);color:#fff;text-decoration:none;font-weight:800;font-size:13px;cursor:pointer;backdrop-filter:blur(5px)}
+.outline-btn:hover{background:rgba(255,255,255,.16);transform:translateY(-2px)}
+.recruiter-actions .resume-btn{background:#e6c36a;color:#0b1f3a}
+@media(max-width:900px){.snapshot-grid{grid-template-columns:repeat(2,1fr)}.recruiter-section{flex-direction:column;align-items:flex-start}.recruiter-actions{min-width:0}}
+@media(max-width:650px){.snapshot-grid,.learning-grid{grid-template-columns:1fr}.journey-item{gap:15px}.recruiter-section{margin-left:8%;margin-right:8%;padding:32px 24px}.recruiter-section h2{font-size:25px}.recruiter-actions{width:100%}.recruiter-actions>*{flex:1}}
+
+</style>
+
+<style>
+.experience-card{padding:30px}.experience-head{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;margin-bottom:10px}.experience-head h3{margin:5px 0 0}.experience-meta{display:flex;flex-direction:column;align-items:flex-end;gap:7px;white-space:nowrap;color:#667085;font-size:12px;padding-top:2px}@media(max-width:700px){.experience-head{flex-direction:column;gap:8px}.experience-meta{align-items:flex-start;white-space:normal;gap:4px}.experience-card{padding:23px}}
+</style><style id="final-portfolio-polish">
+.experience-meta span{display:block}
+.recruiter-actions .resume-btn{min-width:150px}
+@media(max-width:700px){
+  .recruiter-actions{width:100%}
+  .recruiter-actions .resume-btn{width:100%}
+}
 </style>
 </head>
 <body>
@@ -335,14 +373,27 @@ footer::before{content:"";position:absolute;left:20%;right:20%;top:0;height:1px;
 <div class="stats"><div class="stat"><strong>2</strong>Specializations</div><div class="stat"><strong>2+</strong>Internship Experiences</div><div class="stat"><strong>3+</strong>Academic Projects</div><div class="stat"><strong>4+</strong>Core Tools</div></div>
 </section>
 
-<section id="experience">
-<h2 class="section-title">Experience</h2>
-<div class="timeline">
-<div class="card"><div class="year">HR INTERNSHIP · EMCURE PHARMACEUTICALS</div><h3>HR Intern — Dabhala Plant, Visnagar</h3><p>Worked on employee engagement and retention research, employee surveys, recruitment support, onboarding coordination, HRIS data work and analysis of absenteeism and turnover information.</p><p><strong>Key learning:</strong> HR operations, employee engagement, recruitment processes, documentation and workplace communication.</p></div>
-<div class="card"><div class="year">SALES ASSOCIATE · 04/2025 – 11/2025</div><h3>Sales Associate — JHEX Consulting LLP</h3><p>Assisted customers with product inquiries and sales, promoted services and products, and enhanced sales skills through regular training.</p><p><strong>Key learning:</strong> Customer interaction, sales communication, product promotion and professional relationship building.</p></div>
-<div class="card"><div class="year">ACCOUNTING INTERNSHIP · 2026</div><h3>Accounting Department Intern</h3><p>Developing practical exposure to accounting operations, documentation, GST-related concepts, Tally Prime, BUSY and day-to-day financial processes.</p><p><strong>Key learning:</strong> Accounting entries, transaction processing, reconciliation concepts and finance-system workflows.</p></div>
-</div>
+
+<section id="snapshot" class="premium-section">
+  <div class="section-kicker">QUICK SNAPSHOT</div>
+  <h2 class="section-title">A quick look at my professional profile</h2>
+  <div class="snapshot-grid">
+    <div class="snapshot-card"><span class="snapshot-icon">🎓</span><strong>Integrated MBA</strong><span>Sankalchand Patel University</span></div>
+    <div class="snapshot-card"><span class="snapshot-icon">💼</span><strong>Finance + HR</strong><span>Dual specialization</span></div>
+    <div class="snapshot-card"><span class="snapshot-icon">🧾</span><strong>Accounting</strong><span>Tally Prime • BUSY • GST concepts</span></div>
+    <div class="snapshot-card"><span class="snapshot-icon">🧾</span><strong>Career Focus</strong><span>Accounting • Finance</span></div>
+  </div>
 </section>
+
+
+
+<section id="experience">
+<h2 class="section-title">Professional Experience</h2>
+<div class="timeline">
+<div class="card experience-card"><div class="experience-head"><div><div class="year">HR INTERNSHIP · EMCURE PHARMACEUTICALS</div><h3>HR Intern — Dabhala Plant, Visnagar</h3></div><div class="experience-meta"><span>📅 Apr 2025 – Jun 2025</span><span>📍 Visnagar, Gujarat</span></div></div><p>Worked on employee engagement and retention research, employee surveys, recruitment support, onboarding coordination, HRIS data work and analysis of absenteeism and turnover information.</p><p><strong>Key learning:</strong> HR operations, employee engagement, recruitment processes, documentation and workplace communication.</p></div>
+<div class="card experience-card"><div class="experience-head"><div><div class="year">SALES ASSOCIATE · JHEX CONSULTING LLP</div><h3>Sales Associate</h3></div><div class="experience-meta"><span>📅 Apr 2025 – Nov 2025</span><span>📍 Visnagar, Gujarat</span></div></div><p>Assisted customers with product inquiries and sales, promoted services and products, and enhanced sales skills through regular training.</p><p><strong>Key learning:</strong> Customer interaction, sales communication, product promotion and professional relationship building.</p></div>
+<div class="card experience-card"><div class="experience-head"><div><div class="year">ACCOUNTING INTERNSHIP</div><h3>Accounting Department Intern</h3></div><div class="experience-meta"><span>📅 Aug 2026 – Nov 2026</span><span>📍 Mahesana, Gujarat</span></div></div><p>Developing practical exposure to accounting operations, documentation, GST-related concepts, Tally Prime, BUSY and day-to-day financial processes.</p><p><strong>Key learning:</strong> Accounting entries, transaction processing, reconciliation concepts and finance-system workflows.</p></div>
+</div></section>
 
 <section id="projects">
 <h2 class="section-title">Projects</h2>
@@ -391,12 +442,26 @@ footer::before{content:"";position:absolute;left:20%;right:20%;top:0;height:1px;
 </div>
 </section>
 
+
+
+
+<section id="recruiter" class="recruiter-section">
+  <div>
+    <div class="section-kicker light">OPEN TO OPPORTUNITIES</div>
+    <h2>Let's build something meaningful together.</h2>
+    <p>I'm exploring opportunities where I can apply my skills in Accounting, Finance, HR and related business roles while continuing to learn and grow.</p>
+  </div>
+  <div class="recruiter-actions">
+    <button class="resume-btn" onclick="openResume()">👁 View Resume</button>
+  </div>
+</section>
+
 <section id="contact">
 <h2 class="section-title">Let's Connect</h2>
 <div class="card contact-card">
   <h3>Nikhilji Thakor</h3>
   <p class="contact-role">Integrated MBA | Finance &amp; HR</p>
-  <p>Open to opportunities in finance, accounting, human resources and related entry-level roles.</p>
+  <p>Open to opportunities in accounting, finance, human resources and related entry-level roles.</p>
   <div class="contact-divider"></div>
   <div class="contact-row">
     <div class="contact-icon">in</div>
@@ -413,10 +478,10 @@ footer::before{content:"";position:absolute;left:20%;right:20%;top:0;height:1px;
     <div class="contact-icon">📄</div>
     <div class="contact-info">
       <strong>Resume</strong>
-      <a href="#" onclick="openResume(); return false;">Nikhilji Thakor — Resume.pdf ↗</a>
+      <a href="#" onclick="openResume(); return false;">Nikhilji Thakor — Resume.pdf ↓</a>
     </div>
     <div class="contact-actions">
-      <button onclick="openResume()">👁 View Resume</button>
+      <a class="primary" href="resume.pdf" download="Nikhilji Resume.pdf">⬇ Download Resume</a>
     </div>
   </div>
 </div>

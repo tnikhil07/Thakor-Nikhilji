@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nikhilji Thakor | Finance Portfolio</title>
+<title>Nikhilji Thakor | Finance & Banking Portfolio</title>
 <style>
 :root{--navy:#0b1f3a;--blue:#1769aa;--gold:#c79a3b;--light:#f5f7fa;--text:#243447;--muted:#667085;--white:#fff}
 *{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);background:var(--light);line-height:1.6}
@@ -326,6 +326,35 @@ footer::before{content:"";position:absolute;left:20%;right:20%;top:0;height:1px;
 @media(max-width:900px){.snapshot-grid{grid-template-columns:repeat(2,1fr)}.recruiter-section{flex-direction:column;align-items:flex-start}.recruiter-actions{min-width:0}}
 @media(max-width:650px){.snapshot-grid,.learning-grid{grid-template-columns:1fr}.journey-item{gap:15px}.recruiter-section{margin-left:8%;margin-right:8%;padding:32px 24px}.recruiter-section h2{font-size:25px}.recruiter-actions{width:100%}.recruiter-actions>*{flex:1}}
 
+
+/* ===== CERTIFICATIONS & ACHIEVEMENTS ===== */
+.certifications-section{max-width:1250px}
+.cert-intro{max-width:760px;color:#667085;font-size:15px;margin:-15px 0 30px}
+.cert-filters{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:28px}
+.cert-filter{border:1px solid #dfe6ee;background:#fff;color:#0b1f3a;border-radius:999px;padding:9px 15px;font-size:12px;font-weight:700;cursor:pointer;transition:.25s}
+.cert-filter:hover,.cert-filter.active{background:#0b1f3a;color:#fff;border-color:#0b1f3a;transform:translateY(-2px)}
+.cert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.cert-card{background:rgba(255,255,255,.9);border:1px solid #e3eaf0;border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(11,31,58,.07);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+.cert-card:hover{transform:translateY(-7px);box-shadow:0 18px 42px rgba(11,31,58,.13);border-color:rgba(23,105,170,.25)}
+.cert-preview{height:220px;background:linear-gradient(135deg,#eaf1f6,#f8fbfd);padding:15px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.cert-preview img{width:100%;height:100%;object-fit:contain;border-radius:7px;box-shadow:0 7px 20px rgba(11,31,58,.13);background:#fff;transition:transform .35s ease}
+.cert-card:hover .cert-preview img{transform:scale(1.025)}
+.cert-body{padding:20px}
+.cert-category{display:inline-block;color:#1769aa;background:#edf5fb;border-radius:20px;padding:5px 9px;font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;margin-bottom:11px}
+.cert-body h3{font-size:19px;color:#0b1f3a;line-height:1.3;margin:0 0 8px}
+.cert-issuer{font-size:13px;color:#667085;line-height:1.5;margin:0 0 4px}
+.cert-date{font-size:12px;color:#8493a4;margin:0 0 17px}
+.cert-view{width:100%;border:0;background:linear-gradient(135deg,#1769aa,#0b1f3a);color:#fff;border-radius:8px;padding:11px 14px;font-size:12px;font-weight:800;cursor:pointer;box-shadow:0 7px 18px rgba(23,105,170,.16);transition:.25s}
+.cert-view:hover{transform:translateY(-2px);box-shadow:0 11px 24px rgba(23,105,170,.24)}
+.cert-modal{display:none;position:fixed;inset:0;z-index:3000;background:rgba(3,14,27,.78);backdrop-filter:blur(8px);padding:18px}
+.cert-modal.open{display:flex;align-items:center;justify-content:center}
+.cert-window{width:min(1100px,96vw);height:min(92vh,900px);background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 25px 80px rgba(0,0,0,.4);display:flex;flex-direction:column}
+.cert-window-head{height:54px;flex:none;background:linear-gradient(90deg,#0b1f3a,#164b78);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 15px;font-size:14px;font-weight:800}
+.cert-window-close{border:0;background:rgba(255,255,255,.12);color:#fff;width:34px;height:34px;border-radius:50%;font-size:22px;cursor:pointer}
+.cert-frame{width:100%;height:calc(100% - 54px);border:0;background:#eef3f7}
+@media(max-width:950px){.cert-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:650px){.cert-grid{grid-template-columns:1fr}.cert-preview{height:235px}.cert-window{width:98vw;height:94vh}}
+
 </style>
 
 <style>
@@ -342,7 +371,7 @@ footer::before{content:"";position:absolute;left:20%;right:20%;top:0;height:1px;
 <body>
 <div class="ambient-orb a" aria-hidden="true"></div><div class="ambient-orb b" aria-hidden="true"></div>
 <nav><div class="logo">Thakor Nikhilji</div><div class="navlinks">
-<a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+<a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#certifications">Certificates</a><a href="#contact">Contact</a>
 </div></nav>
 
 <header class="hero">
@@ -444,6 +473,85 @@ footer::before{content:"";position:absolute;left:20%;right:20%;top:0;height:1px;
 
 
 
+
+
+<section id="certifications" class="certifications-section">
+  <h2 class="section-title">Certifications &amp; Achievements</h2>
+  <p class="cert-intro">A collection of certifications and learning achievements that showcase my continuous development in finance, accounting, banking, technology and professional skills.</p>
+  <div class="cert-filters">
+    <button class="cert-filter active" onclick="filterCertificates('all',this)">All</button>
+    <button class="cert-filter" onclick="filterCertificates('Finance & Accounting',this)">Finance &amp; Accounting</button>
+    <button class="cert-filter" onclick="filterCertificates('Finance & Banking',this)">Finance &amp; Banking</button>
+    <button class="cert-filter" onclick="filterCertificates('Accounting & Software',this)">Accounting &amp; Software</button>
+  </div>
+  <div class="cert-grid">
+    <article class="cert-card" data-cert-category="Finance & Accounting">
+      <div class="cert-preview">
+        <img src="certificates/microsoft-excel.jpg" alt="Microsoft Excel — Beginners to Advanced certificate preview" loading="lazy">
+      </div>
+      <div class="cert-body">
+        <span class="cert-category">Finance & Accounting</span>
+        <h3>Microsoft Excel — Beginners to Advanced</h3>
+        <p class="cert-issuer">My Live Support</p>
+        <p class="cert-date">January 2024</p>
+        <button class="cert-view" type="button" onclick="openCertificate('certificates/microsoft-excel.pdf','Microsoft Excel — Beginners to Advanced')">View Certificate</button>
+      </div>
+    </article>
+
+    <article class="cert-card" data-cert-category="Finance & Banking">
+      <div class="cert-preview">
+        <img src="certificates/finance-an-industrial-approach.jpg" alt="Finance — An Industrial Approach certificate preview" loading="lazy">
+      </div>
+      <div class="cert-body">
+        <span class="cert-category">Finance & Banking</span>
+        <h3>Finance — An Industrial Approach</h3>
+        <p class="cert-issuer">Sankalchand Patel University • L&T EduTech • LearnKonnect</p>
+        <p class="cert-date">Certificate of Completion</p>
+        <button class="cert-view" type="button" onclick="openCertificate('certificates/finance-an-industrial-approach.pdf','Finance — An Industrial Approach')">View Certificate</button>
+      </div>
+    </article>
+
+    <article class="cert-card" data-cert-category="Finance & Banking">
+      <div class="cert-preview">
+        <img src="certificates/merchant-banking.jpg" alt="Merchant Banking certificate preview" loading="lazy">
+      </div>
+      <div class="cert-body">
+        <span class="cert-category">Finance & Banking</span>
+        <h3>Merchant Banking</h3>
+        <p class="cert-issuer">National Institute of Securities Markets (NISM)</p>
+        <p class="cert-date">January 11, 2026</p>
+        <button class="cert-view" type="button" onclick="openCertificate('certificates/merchant-banking.pdf','Merchant Banking')">View Certificate</button>
+      </div>
+    </article>
+
+    <article class="cert-card" data-cert-category="Finance & Banking">
+      <div class="cert-preview">
+        <img src="certificates/national-financial-literacy-quiz-2026.jpg" alt="National Financial Literacy Quiz 2026 certificate preview" loading="lazy">
+      </div>
+      <div class="cert-body">
+        <span class="cert-category">Finance & Banking</span>
+        <h3>National Financial Literacy Quiz 2026</h3>
+        <p class="cert-issuer">NISM / SEBI</p>
+        <p class="cert-date">2026 • Online Round</p>
+        <button class="cert-view" type="button" onclick="openCertificate('certificates/national-financial-literacy-quiz-2026.pdf','National Financial Literacy Quiz 2026')">View Certificate</button>
+      </div>
+    </article>
+
+    <article class="cert-card" data-cert-category="Accounting & Software">
+      <div class="cert-preview">
+        <img src="certificates/tally-prime.jpg" alt="Tally Prime certificate preview" loading="lazy">
+      </div>
+      <div class="cert-body">
+        <span class="cert-category">Accounting & Software</span>
+        <h3>Tally Prime</h3>
+        <p class="cert-issuer">STP Computer Education</p>
+        <p class="cert-date">August 2024 • A Grade</p>
+        <button class="cert-view" type="button" onclick="openCertificate('certificates/tally-prime.pdf','Tally Prime')">View Certificate</button>
+      </div>
+    </article>
+
+  </div>
+</section>
 
 <section id="recruiter" class="recruiter-section">
   <div>
@@ -728,5 +836,39 @@ document.addEventListener("keydown",function(event){
 });
 
 </script>
+
+<div id="certificateModal" class="cert-modal" onclick="closeCertificate(event)">
+  <div class="cert-window">
+    <div class="cert-window-head">
+      <span id="certificateModalTitle">Certificate</span>
+      <button class="cert-window-close" type="button" onclick="closeCertificate()" aria-label="Close certificate">×</button>
+    </div>
+    <iframe id="certificateFrame" class="cert-frame" title="Certificate viewer"></iframe>
+  </div>
+</div>
+
+<script>
+function filterCertificates(category, button){
+  document.querySelectorAll(".cert-filter").forEach(function(btn){btn.classList.remove("active");});
+  button.classList.add("active");
+  document.querySelectorAll(".cert-card").forEach(function(card){
+    card.style.display=(category==="all"||card.dataset.certCategory===category)?"":"none";
+  });
+}
+function openCertificate(file,title){
+  document.getElementById("certificateModalTitle").textContent=title;
+  document.getElementById("certificateFrame").src=file;
+  document.getElementById("certificateModal").classList.add("open");
+  document.body.style.overflow="hidden";
+}
+function closeCertificate(event){
+  if(event&&event.target&&event.target.id!=="certificateModal")return;
+  document.getElementById("certificateModal").classList.remove("open");
+  document.getElementById("certificateFrame").src="";
+  document.body.style.overflow="";
+}
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closeCertificate();});
+</script>
+
 </body>
 </html>

@@ -346,14 +346,20 @@ footer::before{content:"";position:absolute;left:20%;right:20%;top:0;height:1px;
 .cert-date{font-size:12px;color:#8493a4;margin:0 0 17px}
 .cert-view{width:100%;border:0;background:linear-gradient(135deg,#1769aa,#0b1f3a);color:#fff;border-radius:8px;padding:11px 14px;font-size:12px;font-weight:800;cursor:pointer;box-shadow:0 7px 18px rgba(23,105,170,.16);transition:.25s}
 .cert-view:hover{transform:translateY(-2px);box-shadow:0 11px 24px rgba(23,105,170,.24)}
-.cert-modal{display:none;position:fixed;inset:0;z-index:3000;background:rgba(3,14,27,.78);backdrop-filter:blur(8px);padding:18px}
+.cert-modal{display:none;position:fixed;inset:0;z-index:3000;background:rgba(3,14,27,.82);backdrop-filter:blur(10px);padding:14px}
 .cert-modal.open{display:flex;align-items:center;justify-content:center}
-.cert-window{width:min(1100px,96vw);height:min(92vh,900px);background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 25px 80px rgba(0,0,0,.4);display:flex;flex-direction:column}
-.cert-window-head{height:54px;flex:none;background:linear-gradient(90deg,#0b1f3a,#164b78);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 15px;font-size:14px;font-weight:800}
-.cert-window-close{border:0;background:rgba(255,255,255,.12);color:#fff;width:34px;height:34px;border-radius:50%;font-size:22px;cursor:pointer}
-.cert-frame{width:100%;height:calc(100% - 54px);border:0;background:#eef3f7}
-@media(max-width:950px){.cert-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:650px){.cert-grid{grid-template-columns:1fr}.cert-preview{height:235px}.cert-window{width:98vw;height:94vh}}
+.cert-window{width:min(1180px,98vw);height:min(94vh,940px);background:#0b1624;border:1px solid rgba(255,255,255,.12);border-radius:16px;overflow:hidden;box-shadow:0 25px 90px rgba(0,0,0,.48);display:flex;flex-direction:column}
+.cert-window-head{height:58px;flex:none;background:linear-gradient(90deg,#0b1f3a,#164b78);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 15px;font-size:14px;font-weight:800}
+.cert-window-title{display:flex;align-items:center;gap:10px;min-width:0}.cert-window-title span:first-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.cert-viewing-badge{font-size:10px;font-weight:700;letter-spacing:.4px;color:#dce8f3;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.15);padding:5px 8px;border-radius:999px;white-space:nowrap}
+.cert-window-close{border:0;background:rgba(255,255,255,.12);color:#fff;width:34px;height:34px;border-radius:50%;font-size:22px;cursor:pointer;flex:none}.cert-window-close:hover{background:rgba(255,255,255,.2);transform:rotate(90deg)}
+.cert-toolbar{height:52px;flex:none;background:#101e2e;border-bottom:1px solid rgba(255,255,255,.09);display:flex;align-items:center;justify-content:center;gap:8px;color:#dbe6f0}
+.cert-tool-btn{border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.06);color:#fff;border-radius:7px;padding:7px 11px;font-size:12px;font-weight:700;cursor:pointer}.cert-tool-btn:hover{background:rgba(255,255,255,.12)}.cert-tool-btn:disabled{opacity:.35;cursor:not-allowed}
+.cert-page-info{font-size:12px;min-width:76px;text-align:center}.cert-zoom{font-size:12px;min-width:52px;text-align:center;color:#cbd8e5}
+.cert-stage{position:relative;flex:1;overflow:auto;background:radial-gradient(circle at 50% 10%,#23384f 0,#111d2a 45%,#09111b 100%);display:flex;justify-content:center;align-items:flex-start;padding:28px}
+#certificateCanvas{display:block;background:#fff;box-shadow:0 18px 45px rgba(0,0,0,.38);max-width:none;user-select:none;-webkit-user-select:none}
+.cert-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#dce8f3;font-size:13px;pointer-events:none}.cert-loading.hidden{display:none}
+.cert-error{position:absolute;inset:0;display:none;align-items:center;justify-content:center;text-align:center;padding:30px;color:#ffd8d8}.cert-error.open{display:flex}.cert-error-box{max-width:520px;background:rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:22px}.cert-window-foot{height:34px;flex:none;background:#0b1624;color:#93a6b9;display:flex;align-items:center;justify-content:center;font-size:10px;letter-spacing:.2px}
+@media(max-width:650px){.cert-grid{grid-template-columns:1fr}.cert-preview{height:235px}.cert-window{width:99vw;height:96vh;border-radius:12px}.cert-window-head{height:54px}.cert-window-title{gap:6px}.cert-viewing-badge{display:none}.cert-toolbar{height:50px;gap:5px}.cert-tool-btn{padding:7px 9px}.cert-stage{padding:16px 8px}.cert-window-foot{height:30px}}
 
 </style>
 
@@ -487,7 +493,7 @@ footer::before{content:"";position:absolute;left:20%;right:20%;top:0;height:1px;
   <div class="cert-grid">
     <article class="cert-card" data-cert-category="Finance & Accounting">
       <div class="cert-preview">
-        <img src="certificates/microsoft-excel.jpg" alt="Microsoft Excel — Beginners to Advanced certificate preview" loading="lazy">
+        <img src="certificates/microsoft-excel.png" alt="Microsoft Excel — Beginners to Advanced certificate preview" loading="lazy">
       </div>
       <div class="cert-body">
         <span class="cert-category">Finance & Accounting</span>
@@ -500,7 +506,7 @@ footer::before{content:"";position:absolute;left:20%;right:20%;top:0;height:1px;
 
     <article class="cert-card" data-cert-category="Finance & Banking">
       <div class="cert-preview">
-        <img src="certificates/finance-an-industrial-approach.jpg" alt="Finance — An Industrial Approach certificate preview" loading="lazy">
+        <img src="certificates/finance-an-industrial-approach.png" alt="Finance — An Industrial Approach certificate preview" loading="lazy">
       </div>
       <div class="cert-body">
         <span class="cert-category">Finance & Banking</span>
@@ -513,7 +519,7 @@ footer::before{content:"";position:absolute;left:20%;right:20%;top:0;height:1px;
 
     <article class="cert-card" data-cert-category="Finance & Banking">
       <div class="cert-preview">
-        <img src="certificates/merchant-banking.jpg" alt="Merchant Banking certificate preview" loading="lazy">
+        <img src="certificates/merchant-banking.png" alt="Merchant Banking certificate preview" loading="lazy">
       </div>
       <div class="cert-body">
         <span class="cert-category">Finance & Banking</span>
@@ -526,7 +532,7 @@ footer::before{content:"";position:absolute;left:20%;right:20%;top:0;height:1px;
 
     <article class="cert-card" data-cert-category="Finance & Banking">
       <div class="cert-preview">
-        <img src="certificates/national-financial-literacy-quiz-2026.jpg" alt="National Financial Literacy Quiz 2026 certificate preview" loading="lazy">
+        <img src="certificates/national-financial-literacy-quiz-2026.png" alt="National Financial Literacy Quiz 2026 certificate preview" loading="lazy">
       </div>
       <div class="cert-body">
         <span class="cert-category">Finance & Banking</span>
@@ -539,7 +545,7 @@ footer::before{content:"";position:absolute;left:20%;right:20%;top:0;height:1px;
 
     <article class="cert-card" data-cert-category="Accounting & Software">
       <div class="cert-preview">
-        <img src="certificates/tally-prime.jpg" alt="Tally Prime certificate preview" loading="lazy">
+        <img src="certificates/tally-prime.png" alt="Tally Prime certificate preview" loading="lazy">
       </div>
       <div class="cert-body">
         <span class="cert-category">Accounting & Software</span>
@@ -838,16 +844,40 @@ document.addEventListener("keydown",function(event){
 </script>
 
 <div id="certificateModal" class="cert-modal" onclick="closeCertificate(event)">
-  <div class="cert-window">
+  <div class="cert-window" onclick="event.stopPropagation()">
     <div class="cert-window-head">
-      <span id="certificateModalTitle">Certificate</span>
+      <div class="cert-window-title"><span id="certificateModalTitle">Certificate</span><span class="cert-viewing-badge">VIEWING MODE</span></div>
       <button class="cert-window-close" type="button" onclick="closeCertificate()" aria-label="Close certificate">×</button>
     </div>
-    <iframe id="certificateFrame" class="cert-frame" title="Certificate viewer"></iframe>
+    <div class="cert-toolbar" aria-label="Certificate viewer controls">
+      <button class="cert-tool-btn" id="certPrev" type="button" onclick="certPrevPage()">‹ Prev</button>
+      <span class="cert-page-info" id="certPageInfo">Page 1 / 1</span>
+      <button class="cert-tool-btn" id="certNext" type="button" onclick="certNextPage()">Next ›</button>
+      <button class="cert-tool-btn" type="button" onclick="certZoomOut()">−</button>
+      <span class="cert-zoom" id="certZoomLabel">100%</span>
+      <button class="cert-tool-btn" type="button" onclick="certZoomIn()">+</button>
+      <button class="cert-tool-btn" type="button" onclick="certFitPage()">Fit</button>
+    </div>
+    <div class="cert-stage" id="certStage">
+      <div class="cert-loading" id="certLoading">Loading certificate…</div>
+      <div class="cert-error" id="certError"><div class="cert-error-box"><strong>Certificate could not be displayed.</strong><br><span id="certErrorText">Please refresh the page and try again.</span></div></div>
+      <canvas id="certificateCanvas" aria-label="Certificate page"></canvas>
+    </div>
+    <div class="cert-window-foot">Custom PDF viewer • Download and Print controls are intentionally not provided</div>
   </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script>
+const certPdfWorker = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+if(window.pdfjsLib){ pdfjsLib.GlobalWorkerOptions.workerSrc = certPdfWorker; }
+
+let certPdfDoc = null;
+let certPageNum = 1;
+let certScale = 1.0;
+let certRenderTask = null;
+let certCurrentFile = "";
+
 function filterCertificates(category, button){
   document.querySelectorAll(".cert-filter").forEach(function(btn){btn.classList.remove("active");});
   button.classList.add("active");
@@ -855,19 +885,105 @@ function filterCertificates(category, button){
     card.style.display=(category==="all"||card.dataset.certCategory===category)?"":"none";
   });
 }
-function openCertificate(file,title){
+
+async function openCertificate(file,title){
   document.getElementById("certificateModalTitle").textContent=title;
-  document.getElementById("certificateFrame").src=file;
   document.getElementById("certificateModal").classList.add("open");
   document.body.style.overflow="hidden";
+  certCurrentFile=file;
+  certPdfDoc=null;
+  certPageNum=1;
+  certScale=1.0;
+  showCertLoading(true);
+  showCertError(false);
+  updateCertControls();
+  try{
+    if(!window.pdfjsLib) throw new Error("The PDF viewer library did not load.");
+    const loadingTask=pdfjsLib.getDocument({url:file});
+    certPdfDoc=await loadingTask.promise;
+    certPageNum=1;
+    certScale=await getFitScale(certPageNum);
+    await renderCertificatePage(certPageNum);
+  }catch(err){
+    console.error(err);
+    showCertLoading(false);
+    document.getElementById("certErrorText").textContent="The PDF could not be loaded. Please check that the PDF is inside your certificates folder.";
+    showCertError(true);
+  }
 }
+
+async function renderCertificatePage(pageNum){
+  if(!certPdfDoc)return;
+  showCertLoading(true);
+  if(certRenderTask){try{certRenderTask.cancel();}catch(e){}}
+  try{
+    const page=await certPdfDoc.getPage(pageNum);
+    const viewport=page.getViewport({scale:certScale});
+    const canvas=document.getElementById("certificateCanvas");
+    const ctx=canvas.getContext("2d",{alpha:false});
+    const dpr=Math.min(window.devicePixelRatio||1,2);
+    canvas.width=Math.floor(viewport.width*dpr);
+    canvas.height=Math.floor(viewport.height*dpr);
+    canvas.style.width=viewport.width+"px";
+    canvas.style.height=viewport.height+"px";
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    certRenderTask=page.render({canvasContext:ctx,viewport:viewport});
+    await certRenderTask.promise;
+    certRenderTask=null;
+    showCertLoading(false);
+    updateCertControls();
+  }catch(err){
+    if(err&&err.name==="RenderingCancelledException")return;
+    console.error(err);
+    showCertLoading(false);
+  }
+}
+
+async function getFitScale(pageNum){
+  const page=await certPdfDoc.getPage(pageNum);
+  const base=page.getViewport({scale:1});
+  const stage=document.getElementById("certStage");
+  const availableW=Math.max(stage.clientWidth-56,280);
+  const availableH=Math.max(stage.clientHeight-56,280);
+  return Math.min(availableW/base.width,availableH/base.height)*0.98;
+}
+
+function updateCertControls(){
+  const total=certPdfDoc?certPdfDoc.numPages:1;
+  document.getElementById("certPageInfo").textContent=`Page ${certPageNum} / ${total}`;
+  document.getElementById("certZoomLabel").textContent=Math.round(certScale*100)+"%";
+  document.getElementById("certPrev").disabled=!certPdfDoc||certPageNum<=1;
+  document.getElementById("certNext").disabled=!certPdfDoc||certPageNum>=total;
+}
+
+function certPrevPage(){if(certPdfDoc&&certPageNum>1){certPageNum--;renderCertificatePage(certPageNum);}}
+function certNextPage(){if(certPdfDoc&&certPageNum<certPdfDoc.numPages){certPageNum++;renderCertificatePage(certPageNum);}}
+function certZoomIn(){if(!certPdfDoc)return;certScale=Math.min(certScale*1.15,4);renderCertificatePage(certPageNum);}
+function certZoomOut(){if(!certPdfDoc)return;certScale=Math.max(certScale/1.15,0.35);renderCertificatePage(certPageNum);}
+async function certFitPage(){if(!certPdfDoc)return;certScale=await getFitScale(certPageNum);renderCertificatePage(certPageNum);}
+function showCertLoading(show){document.getElementById("certLoading").classList.toggle("hidden",!show);}
+function showCertError(show){document.getElementById("certError").classList.toggle("open",show);}
+
 function closeCertificate(event){
   if(event&&event.target&&event.target.id!=="certificateModal")return;
   document.getElementById("certificateModal").classList.remove("open");
-  document.getElementById("certificateFrame").src="";
+  if(certRenderTask){try{certRenderTask.cancel();}catch(e){}}
+  certRenderTask=null;
+  certPdfDoc=null;
+  certCurrentFile="";
+  const canvas=document.getElementById("certificateCanvas");
+  canvas.width=1;canvas.height=1;canvas.style.width="1px";canvas.style.height="1px";
   document.body.style.overflow="";
 }
-document.addEventListener("keydown",function(e){if(e.key==="Escape")closeCertificate();});
+
+// Prevent the obvious browser actions while the certificate viewer is open.
+document.getElementById("certificateModal").addEventListener("contextmenu",function(e){e.preventDefault();});
+document.addEventListener("keydown",function(e){
+  if(!document.getElementById("certificateModal").classList.contains("open"))return;
+  if((e.ctrlKey||e.metaKey)&&["p","s","u"].includes(e.key.toLowerCase()))e.preventDefault();
+  if(e.key==="Escape")closeCertificate();
+});
+window.addEventListener("resize",function(){if(certPdfDoc&&document.getElementById("certificateModal").classList.contains("open"))certFitPage();});
 </script>
 
 </body>

@@ -351,7 +351,11 @@ footer::before{content:"";position:absolute;left:20%;right:20%;top:0;height:1px;
 .cert-window{width:min(1100px,96vw);height:min(92vh,900px);background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 25px 80px rgba(0,0,0,.4);display:flex;flex-direction:column}
 .cert-window-head{height:54px;flex:none;background:linear-gradient(90deg,#0b1f3a,#164b78);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 15px;font-size:14px;font-weight:800}
 .cert-window-close{border:0;background:rgba(255,255,255,.12);color:#fff;width:34px;height:34px;border-radius:50%;font-size:22px;cursor:pointer}
-.cert-frame{width:100%;height:calc(100% - 54px);border:0;background:#eef3f7}
+.cert-viewer{width:100%;height:calc(100% - 54px);overflow:auto;background:#eef3f7;padding:24px;display:flex;flex-direction:column;align-items:center;gap:18px}
+.cert-viewer canvas{display:block;max-width:100%;height:auto;background:#fff;box-shadow:0 8px 24px rgba(11,31,58,.18)}
+.cert-viewer .cert-loading{color:#667085;font-size:14px;padding:40px;text-align:center}
+.cert-viewer .cert-error{color:#b42318;background:#fff;border:1px solid #fecdca;border-radius:10px;padding:18px;max-width:520px;text-align:center}
+@media(max-width:650px){.cert-viewer{padding:10px;gap:10px}}
 @media(max-width:950px){.cert-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:650px){.cert-grid{grid-template-columns:1fr}.cert-preview{height:235px}.cert-window{width:98vw;height:94vh}}
 
@@ -367,6 +371,7 @@ footer::before{content:"";position:absolute;left:20%;right:20%;top:0;height:1px;
   .recruiter-actions .resume-btn{width:100%}
 }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 </head>
 <body>
 <div class="ambient-orb a" aria-hidden="true"></div><div class="ambient-orb b" aria-hidden="true"></div>
@@ -843,7 +848,7 @@ document.addEventListener("keydown",function(event){
       <span id="certificateModalTitle">Certificate</span>
       <button class="cert-window-close" type="button" onclick="closeCertificate()" aria-label="Close certificate">×</button>
     </div>
-    <iframe id="certificateFrame" class="cert-frame" title="Certificate viewer"></iframe>
+    <div id="certificateViewer" class="cert-viewer" aria-label="Certificate viewer"><div class="cert-loading">Loading certificate…</div></div>
   </div>
 </div>
 
@@ -855,19 +860,72 @@ function filterCertificates(category, button){
     card.style.display=(category==="all"||card.dataset.certCategory===category)?"":"none";
   });
 }
-function openCertificate(file,title){
+let certificateLoadingTask = null;
+let certificatePdf = null;
+
+async function openCertificate(file,title){
   document.getElementById("certificateModalTitle").textContent=title;
-  document.getElementById("certificateFrame").src=file + "#toolbar=0&navpanes=0&scrollbar=1";
-  document.getElementById("certificateModal").classList.add("open");
+  const modal = document.getElementById("certificateModal");
+  const viewer = document.getElementById("certificateViewer");
+
+  modal.classList.add("open");
   document.body.style.overflow="hidden";
+  viewer.innerHTML='<div class="cert-loading">Loading certificate…</div>';
+
+  try{
+    if(certificateLoadingTask){
+      try{ certificateLoadingTask.destroy(); }catch(e){}
+      certificateLoadingTask=null;
+    }
+    certificatePdf=null;
+
+    certificateLoadingTask = pdfjsLib.getDocument(file);
+    certificatePdf = await certificateLoadingTask.promise;
+
+    viewer.innerHTML="";
+
+    for(let pageNumber=1; pageNumber<=certificatePdf.numPages; pageNumber++){
+      const page = await certificatePdf.getPage(pageNumber);
+      const baseViewport = page.getViewport({scale:1});
+      const maxWidth = Math.max(300, Math.min(viewer.clientWidth - 48, 1200));
+      const scale = Math.min(1.6, maxWidth / baseViewport.width);
+      const viewport = page.getViewport({scale:scale});
+
+      const canvas = document.createElement("canvas");
+      const context = canvas.getContext("2d");
+      canvas.width = Math.ceil(viewport.width);
+      canvas.height = Math.ceil(viewport.height);
+      canvas.setAttribute("aria-label","Certificate page " + pageNumber);
+
+      viewer.appendChild(canvas);
+      await page.render({canvasContext:context, viewport:viewport}).promise;
+    }
+  }catch(error){
+    console.error("Certificate viewer error:", error);
+    viewer.innerHTML='<div class="cert-error">Sorry, this certificate could not be displayed.</div>';
+  }finally{
+    certificateLoadingTask=null;
+  }
 }
+
 function closeCertificate(event){
   if(event&&event.target&&event.target.id!=="certificateModal")return;
   document.getElementById("certificateModal").classList.remove("open");
-  document.getElementById("certificateFrame").src="";
+  document.getElementById("certificateViewer").innerHTML='<div class="cert-loading">Loading certificate…</div>';
+  if(certificateLoadingTask){
+    try{ certificateLoadingTask.destroy(); }catch(e){}
+    certificateLoadingTask=null;
+  }
+  certificatePdf=null;
   document.body.style.overflow="";
 }
-document.addEventListener("keydown",function(e){if(e.key==="Escape")closeCertificate();});
+
+document.addEventListener("keydown",function(e){
+  if(e.key==="Escape") closeCertificate();
+  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="p"&&document.getElementById("certificateModal").classList.contains("open")){
+    e.preventDefault();
+  }
+});
 </script>
 
 </body>

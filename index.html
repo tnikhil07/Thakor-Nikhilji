@@ -857,7 +857,7 @@ function filterCertificates(category, button){
 }
 function openCertificate(file,title){
   document.getElementById("certificateModalTitle").textContent=title;
-  document.getElementById("certificateFrame").src=file;
+  document.getElementById("certificateFrame").src=file + "#toolbar=0&navpanes=0&scrollbar=1";
   document.getElementById("certificateModal").classList.add("open");
   document.body.style.overflow="hidden";
 }

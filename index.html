@@ -62,14 +62,84 @@
 </div>
 
 <div class="resume-modal" id="resumeModal" onclick="closeResume(event)">
-<div class="resume-window">
-<div class="resume-window-header">
-<span>Nikhilji Thakor — Resume</span>
-<button aria-label="Close" class="resume-close" onclick="closeResume()">×</button>
+  <div class="resume-window" onclick="event.stopPropagation()">
+
+    <div class="resume-window-head">
+      <div class="resume-window-title">
+        <span>Nikhilji Thakor — Resume</span>
+        <span class="resume-viewing-badge">VIEWING MODE</span>
+      </div>
+
+      <button
+        class="resume-window-close"
+        type="button"
+        onclick="closeResume()"
+        aria-label="Close resume">
+        ×
+      </button>
+    </div>
+
+    <div class="resume-toolbar" aria-label="Resume viewer controls">
+      <button
+        class="resume-tool-btn"
+        id="resumePrev"
+        type="button"
+        onclick="resumePrevPage()">‹ Prev</button>
+
+      <span class="resume-page-info" id="resumePageInfo">
+        Page 1 / 1
+      </span>
+
+      <button
+        class="resume-tool-btn"
+        id="resumeNext"
+        type="button"
+        onclick="resumeNextPage()">Next ›</button>
+
+      <button
+        class="resume-tool-btn"
+        type="button"
+        onclick="resumeZoomOut()">−</button>
+
+      <span class="resume-zoom" id="resumeZoomLabel">100%</span>
+
+      <button
+        class="resume-tool-btn"
+        type="button"
+        onclick="resumeZoomIn()">+</button>
+
+      <button
+        class="resume-tool-btn"
+        type="button"
+        onclick="resumeFitPage()">Fit</button>
+    </div>
+
+    <div class="resume-stage" id="resumeStage">
+      <div class="resume-loading" id="resumeLoading">
+        Loading resume…
+      </div>
+
+      <div class="resume-error" id="resumeError">
+        <div class="resume-error-box">
+          <strong>Resume could not be displayed.</strong><br>
+          <span id="resumeErrorText">
+            Please refresh the page and try again.
+          </span>
+        </div>
+      </div>
+
+      <canvas
+        id="resumeCanvas"
+        aria-label="Resume page"></canvas>
+    </div>
+
+    <div class="resume-window-foot">
+      Custom PDF viewer • Download and Print controls are intentionally not provided
+    </div>
+
+  </div>
 </div>
-<iframe class="resume-frame" id="resumeFrame" title="Nikhilji Thakor Resume"></iframe>
-</div>
-</div>
+
 
 <button aria-label="Leave a message" class="leave-message-btn" onclick="openMessagePopup()" type="button">
 <span>✉</span> Leave a Message

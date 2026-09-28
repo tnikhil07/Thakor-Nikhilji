@@ -1,0 +1,9 @@
+UPLOAD TO portfolio-testing ONLY
+
+1. Keep the existing profile-photo.png, intro-video.mp4, resume.pdf and certificates folder.
+2. Upload/replace index.html.
+3. Upload the css folder.
+4. Upload the js folder.
+5. Upload the sections folder.
+6. Do NOT touch main.
+7. Test the portfolio-testing branch before merging to main.

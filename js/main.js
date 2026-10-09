@@ -74,7 +74,7 @@ async function openResume() {
     pdfjsLib.GlobalWorkerOptions.workerSrc = resumePdfWorker;
 
     const loadingTask = pdfjsLib.getDocument({
-      url: "Nikhilji-resume.pdf"
+      url: "profile/Nikhilji-resume.pdf"
     });
 
     resumePdfDoc = await loadingTask.promise;

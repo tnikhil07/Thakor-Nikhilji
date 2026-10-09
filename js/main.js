@@ -96,7 +96,7 @@ async function openResume() {
 
     if (errorText) {
       errorText.textContent =
-        "The PDF could not be loaded. Please check that Nikhilji-resume.pdf is in the website root folder.";
+        "The PDF could not be loaded. Please website Page.";
     }
 
     showResumeError(true);
